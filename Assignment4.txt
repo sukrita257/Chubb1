@@ -1,0 +1,58 @@
+Q1. db.users.aggregate([{$match:{"date":{$gte:ISODate("2020-10-01"), $lt:ISODate("2020-10-31") }}},
+   
+  {
+     $project:
+	{
+	 "_id":0,
+	 "topics":1,
+	 "tasks":1
+	}
+  }
+])
+
+
+Q2. db.users.aggregate([{$match:{"date":{$gte:ISODate("2020-10-15"), $lt:ISODate("2020-10-31") }}},
+   
+  {
+     $project:
+	{
+	 "_id":0,
+	 "company_drives":1
+	}
+  }
+])
+
+
+Q3. db.users.aggregate([{$match:{"attendance":{$eq:"1"}}},
+   
+  {
+     $project:
+	{
+	 "_id":0,
+	 "user":1,
+	 "company_drives":1
+	}
+  }
+])
+
+
+Q4. db.users.aggregate([{ $group: { _id: null, TotalSum: 
+	{ $sum: "$codekataSolved" } } } ]);
+
+
+Q6. db.users.aggregate([{$match:{"attendance":{$eq:"0"}}},
+{ $match: {
+    $or: [
+        { submission_date: { $lte: ISODate("2021-10-31") } },
+        { submission_date: { $gte: ISODate("2021-10-01") } }
+    ]
+} },
+   
+  {
+     $project:
+	{
+	 "_id":0,
+	 "users":1
+	}
+  }
+])
