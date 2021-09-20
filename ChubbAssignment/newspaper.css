@@ -41,6 +41,9 @@ body{
     color: white;
     font-style: italic;
     padding: 2px;
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+    position: absolute;
+    top:-10px;
 }
 
 .headline{
